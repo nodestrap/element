@@ -2,25 +2,13 @@
 
 
 
-// development:
-// @use "node_modules/@heymarco/sass-class-template/index" as *;
-// @use "node_modules/@heymarco/sass-selector/index"       as selector;
-// @use "node_modules/@heymarco/border/index"              as border;
-// @use "node_modules/@heymarco/spacer/index"              as spacer;
-// @use "node_modules/@heymarco/typography/index"          as typo;
-// @use "node_modules/@heymarco/colors/index"              as color;
-
-// production:
-@use "../../../node_modules/@heymarco/sass-class-template/index" as *;
-@use "../../../node_modules/@heymarco/sass-selector/index"       as selector;
-@use "../../../node_modules/@heymarco/border/index"              as border;
-@use "../../../node_modules/@heymarco/spacer/index"              as spacer;
-@use "../../../node_modules/@heymarco/typography/index"          as typo;
-@use "../../../node_modules/@heymarco/colors/index"              as color;
-
-
-
-@use "sass:meta" as meta;
+@use "~@nodestrap/sass-class-template/src/index" as *;
+@use "~@nodestrap/sass-selector/src/index"       as selector;
+@use "~@nodestrap/border/src/index"              as border;
+@use "~@nodestrap/spacer/src/index"              as spacer;
+@use "~@nodestrap/typography/src/index"          as typo;
+@use "~@nodestrap/colors/src/index"              as color;
+@use "sass:meta"                                 as meta;
 
 
 

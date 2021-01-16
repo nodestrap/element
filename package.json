@@ -1,35 +1,68 @@
 {
-  "name": "@heymarco/element",
-  "version": "1.0.13",
-  "description": "A base class for manipulating common HTML element",
-  "main": "index.js",
+  "name": "@nodestrap/element",
+  "version": "2.0.13",
+  "description": "A base class for manipulating common HTML element.",
+  "dependencies": {
+    "@nodestrap/border": "^2.0.0",
+    "@nodestrap/colors": "^2.0.1",
+    "@nodestrap/sass-class-template": "^2.0.2",
+    "@nodestrap/sass-selector": "^2.0.1",
+    "@nodestrap/spacer": "^2.0.0",
+    "@nodestrap/typography": "^2.0.0",
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.21",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.1",
+    "tilde-sass": "^1.0.0",
+    "typescript": "^4.1.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "testsass": "tilde-sass --file src/*.scss --outFile test/",
+    "compile": "tilde-sass --file src/*.scss --outFile dist/ --outputStyle compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodestrap/element.git"
   },
   "keywords": [
     "html",
     "element",
-    "manipulation",
-    "dom"
+    "dom",
+    "manipulation"
   ],
-  "author": "HeyMarco",
+  "author": "nodestrap, heymarco",
   "license": "ISC",
-  "dependencies": {
-    "@heymarco/border": "^1.0.8",
-    "@heymarco/colors": "^1.0.15",
-    "@heymarco/sass-class-template": "^1.0.7",
-    "@heymarco/sass-selector": "^1.0.5",
-    "@heymarco/spacer": "^1.0.6",
-    "@heymarco/typography": "^1.0.11",
-    "jquery-wrapper-class": "^1.0.13"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/heyymarco/element.git"
-  },
   "bugs": {
-    "url": "https://github.com/heyymarco/element/issues"
+    "url": "https://github.com/nodestrap/element/issues"
   },
-  "homepage": "https://github.com/heyymarco/element#readme"
+  "homepage": "https://github.com/nodestrap/element#readme",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
