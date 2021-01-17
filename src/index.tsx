@@ -22,27 +22,8 @@ export default class Element extends React.Component<Props, State> {
 
 
 
-    constructor(props: Props) {
-        super(props);
-
-        this.bindFunctions.bind(this);
-        this.bindFunctions([
-            this.handleMouseEnter,
-            this.handleMouseLeave,
-            this.handleAnimationEnd
-        ]);
-    }
-
-
-
-    protected bindFunctions(functs: Function[]) {
-        for (let i = 0; i < functs.length; i++) functs[i].bind(this);
-    }
-
-
-
     get defaultClassName(): string {
-        return "elm";
+        return '';
     }
     get className(): string {
         return this.props.className || this.defaultClassName;
@@ -56,20 +37,20 @@ export default class Element extends React.Component<Props, State> {
 
 
 
-    handleMouseEnter() {
+    handleMouseEnter(e: React.MouseEvent) {
         this.setState({
             hover: true,
             leave: false,
         });
     }
-    handleMouseLeave() {
+    handleMouseLeave(e: React.MouseEvent) {
         this.setState({
             hover: false,
             leave: true,
         });
     }
 
-    handleAnimationEnd() {
+    handleAnimationEnd(e: React.MouseEvent) {
         this.setState({
             hover: false,
             leave: false,
