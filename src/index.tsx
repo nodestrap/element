@@ -50,7 +50,7 @@ export default class Element extends React.Component<Props, State> {
         });
     }
 
-    handleAnimationEnd(e: React.MouseEvent) {
+    handleAnimationEnd(e: React.AnimationEvent) {
         this.setState({
             hover: false,
             leave: false,
@@ -64,10 +64,10 @@ export default class Element extends React.Component<Props, State> {
             <div
                 className={this.compositeClassName}
 
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}
+                onMouseEnter={(e) => this.handleMouseEnter(e)}
+                onMouseLeave={(e) => this.handleMouseLeave(e)}
 
-                onAnimationEnd={this.handleAnimationEnd}
+                onAnimationEnd={(e) => this.handleAnimationEnd(e)}
             >
                 {this.props.children || 'abstract class element'}
             </div>
