@@ -13,7 +13,7 @@
 
 
 $alias              : "%element"                            !default;
-$class              : ""                                    !default;
+$class              : "elm"                                    !default;
 $var-root           : ":root"                               !default;
 $var-prefix         : "elm"                                 !default;
 $var-prefix-base    : ""                                    !default;
@@ -366,4 +366,4 @@ $_state-enabled : ".enabled";
 
 
 // abstract class => no emit class
-// @include class($alias, $class, "");
+@include class($alias, $class, "");

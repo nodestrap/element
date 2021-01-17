@@ -1,11 +1,15 @@
 import React from 'react';
+import './index.scss';
 
 
-interface Props {
-    className?: string,
+
+export interface Props {
+    className?: string;
+
+    children?: React.ReactNode
 }
 
-interface State {
+export interface State {
     hover: boolean;
     leave: boolean;
 }
@@ -17,27 +21,40 @@ export default class Element extends React.Component<Props, State> {
     };
 
 
+
     constructor(props: Props) {
         super(props);
 
-        ([
+        this.bindFunctions.bind(this);
+        this.bindFunctions([
             this.handleMouseEnter,
             this.handleMouseLeave,
-            this.handleAnimationEnd,
-        ] as Function[])
-        .forEach((func) => func.bind(this));
+            this.handleAnimationEnd
+        ]);
     }
 
 
-    protected get classNameDefault(): string {
+
+    protected bindFunctions(functs: Function[]) {
+        for (let i = 0; i < functs.length; i++) functs[i].bind(this);
+    }
+
+
+
+    get defaultClassName(): string {
         return "elm";
     }
     get className(): string {
+        return this.props.className || this.defaultClassName;
+    }
+    get compositeClassName(): string {
         return [
-            this.props.className || this.classNameDefault,
+            this.className,
             (this.state.hover && 'hover') || (this.state.leave && 'leave') || ''
         ].join(' ');
     }
+
+
 
     handleMouseEnter() {
         this.setState({
@@ -60,17 +77,18 @@ export default class Element extends React.Component<Props, State> {
     }
 
 
+
     render() {
         return (
             <div
-                className={this.className}
+                className={this.compositeClassName}
 
                 onMouseEnter={this.handleMouseEnter}
                 onMouseLeave={this.handleMouseLeave}
 
                 onAnimationEnd={this.handleAnimationEnd}
             >
-                abstract class element
+                {this.props.children || 'abstract class element'}
             </div>
         );
     }

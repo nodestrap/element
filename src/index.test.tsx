@@ -3,7 +3,12 @@ import { render, screen } from '@testing-library/react';
 import ComponentTest from './index';
 
 
-test('render test of the component', () => {
+test('render test-1 of the component', () => {
     render(<ComponentTest />);
-    const testElm = screen.getByText('abstract class element');
+    screen.getByText('abstract class element');
+});
+
+test('render test-2 of the component', () => {
+    render(<ComponentTest>hello world</ComponentTest>);
+    screen.getByText('hello world');
 });
