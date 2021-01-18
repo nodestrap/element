@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/element",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "A base class for manipulating common HTML element.",
   "dependencies": {
     "@nodestrap/border": "^2.0.0",
@@ -29,6 +29,12 @@
     "testsass": "tilde-sass --file src/*.scss --outFile test/",
     "compile": "tilde-sass --file src/*.scss --outFile dist/ --outputStyle compressed"
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\](?!@nodestrap[/\\\\].+[/\\\\](dist|src)[/\\\\](.+[/\\\\])*).+[.](js|mjs|jsx|ts|tsx|cjs)$",
+      "^.+[.]module[.](css|sass|scss)$"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nodestrap/element.git"
@@ -44,23 +50,5 @@
   "bugs": {
     "url": "https://github.com/nodestrap/element/issues"
   },
-  "homepage": "https://github.com/nodestrap/element#readme",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "homepage": "https://github.com/nodestrap/element#readme"
 }

@@ -71,8 +71,8 @@ export default class Element<TProps extends Props, TState extends State> extends
             <div
                 className={this.compositeClassName}
 
-                onMouseEnter={(e) => this.handleMouseEnter(e)}
-                onMouseLeave={(e) => this.handleMouseLeave(e)}
+                onMouseEnter={(e)   => this.handleMouseEnter(e)}
+                onMouseLeave={(e)   => this.handleMouseLeave(e)}
 
                 onAnimationEnd={(e) => this.handleAnimationEnd(e)}
             >
