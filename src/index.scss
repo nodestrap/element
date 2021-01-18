@@ -287,11 +287,11 @@ $_state-enabled : ".enabled";
         #{$cssvar}backg-l       : var(#{$cssvar}backg-#{$theme-name}-l);
         #{$cssvar}backg-a       : var(#{$cssvar}backg-#{$theme-name}-a);
 
-        // #{$cssvar}backg-c       : var(#{$cssvar}backg-#{$theme-name}-c);
-        // #{$cssvar}backg-x       : var(#{$cssvar}backg-#{$theme-name}-x);
-        // #{$cssvar}backg-r       : var(#{$cssvar}backg-#{$theme-name}-r);
-        // #{$cssvar}backg-g       : var(#{$cssvar}backg-#{$theme-name}-g);
-        // #{$cssvar}backg-b       : var(#{$cssvar}backg-#{$theme-name}-b);
+        #{$cssvar}backg-c       : var(#{$cssvar}backg-#{$theme-name}-c);
+        #{$cssvar}backg-x       : var(#{$cssvar}backg-#{$theme-name}-x);
+        #{$cssvar}backg-r       : var(#{$cssvar}backg-#{$theme-name}-r);
+        #{$cssvar}backg-g       : var(#{$cssvar}backg-#{$theme-name}-g);
+        #{$cssvar}backg-b       : var(#{$cssvar}backg-#{$theme-name}-b);
 
         #{$cssvar}backg-u       : var(#{$cssvar}backg-#{$theme-name}-u);
 
