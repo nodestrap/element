@@ -5,8 +5,6 @@ import './index.scss';
 
 export interface Props {
     className?: string;
-
-    children?: React.ReactNode
 }
 
 export interface State {
@@ -14,11 +12,20 @@ export interface State {
     leave: boolean;
 }
 
-export default class Element extends React.Component<Props, State> {
-    state: State = {
-        hover: false,
-        leave: false,
-    };
+export default class Element<TProps extends Props, TState extends State> extends React.Component<TProps, TState> {
+    state: TState = { } as TState;
+
+
+
+    constructor(props: TProps) {
+        super(props);
+
+
+        const state = this.state;
+
+        state.hover = false;
+        state.leave = false;
+    }
 
 
 
@@ -26,12 +33,13 @@ export default class Element extends React.Component<Props, State> {
         return '';
     }
     get className(): string {
-        return this.props.className || this.defaultClassName;
+        return this.props.className ?? this.defaultClassName;
     }
     get compositeClassName(): string {
+        const state = this.state;
         return [
             this.className,
-            (this.state.hover && 'hover') || (this.state.leave && 'leave') || ''
+            (state.hover && '') ?? (state.leave && 'leave') ?? '',
         ].join(' ');
     }
 
@@ -52,8 +60,7 @@ export default class Element extends React.Component<Props, State> {
 
     handleAnimationEnd(e: React.AnimationEvent) {
         this.setState({
-            hover: false,
-            leave: false,
+            leave: false, // clean up leaving animation
         });
     }
 
@@ -69,7 +76,7 @@ export default class Element extends React.Component<Props, State> {
 
                 onAnimationEnd={(e) => this.handleAnimationEnd(e)}
             >
-                {this.props.children || 'abstract class element'}
+                {this.props.children ?? 'abstract class element'}
             </div>
         );
     }
