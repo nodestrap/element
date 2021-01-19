@@ -46,7 +46,7 @@ export default class Element<TProps extends Props, TState extends State> extends
     }
     get compositeClassName(): string {
         const state = this.state;
-        const varSize = state as VariantSize;
+        const props = this.props;
         return [
             // custom class(es):
             this.className,
@@ -55,8 +55,8 @@ export default class Element<TProps extends Props, TState extends State> extends
             (state.hover && ' ') || (state.leave && 'leave') || ' ',
 
             // variants:
-            ((state as VariantTheme).theme || ' '),
-            ((state as VariantSize).size || ' '),
+            ((props as VariantTheme).theme || ' '),
+            ((props as VariantSize).size || ' '),
         ].join(' ');
     }
 

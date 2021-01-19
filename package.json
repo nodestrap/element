@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/element",
-  "version": "2.0.18",
+  "version": "2.0.19",
   "description": "A base class for manipulating common HTML element.",
   "dependencies": {
     "@nodestrap/border": "^2.0.0",
