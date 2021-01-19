@@ -3,6 +3,15 @@ import './index.scss';
 
 
 
+export interface VariantSize {
+    size?: 'sm' | 'lg';
+}
+export interface VariantTheme {
+    theme?: string;
+}
+
+
+
 export interface Props {
     className?: string;
 }
@@ -37,9 +46,17 @@ export default class Element<TProps extends Props, TState extends State> extends
     }
     get compositeClassName(): string {
         const state = this.state;
+        const varSize = state as VariantSize;
         return [
+            // custom class(es):
             this.className,
+
+            // states:
             (state.hover && ' ') || (state.leave && 'leave') || ' ',
+
+            // variants:
+            ((state as VariantTheme).theme || ' '),
+            ((state as VariantSize).size || ' '),
         ].join(' ');
     }
 
