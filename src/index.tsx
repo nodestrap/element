@@ -39,7 +39,7 @@ export default class Element<TProps extends Props, TState extends State> extends
         const state = this.state;
         return [
             this.className,
-            (state.hover && '') ?? (state.leave && 'leave') ?? '',
+            (state.hover && ' ') || (state.leave && 'leave') || ' ',
         ].join(' ');
     }
 
