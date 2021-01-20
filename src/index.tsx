@@ -21,7 +21,7 @@ export interface State {
     leave: boolean;
 }
 
-export default class Element<TProps extends Props, TState extends State> extends React.Component<TProps, TState> {
+export default class Element<TProps extends Props = Props, TState extends State = State> extends React.Component<TProps, TState> {
     state: TState = { } as TState;
 
 
@@ -57,7 +57,9 @@ export default class Element<TProps extends Props, TState extends State> extends
             // variants:
             ((props as VariantTheme).theme || ' '),
             ((props as VariantSize).size || ' '),
-        ].join(' ');
+        ]
+        .filter(c => (c != ' ') && (c != '')) // removes blank classes
+        .join(' '); // combines all classes separated by space
     }
 
 
