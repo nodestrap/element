@@ -58,7 +58,7 @@ export default class Element<TProps extends Props = Props, TState extends State 
             ((props as VariantTheme).theme || ' '),
             ((props as VariantSize).size || ' '),
         ]
-        .filter(c => (c != ' ') && (c != '')) // removes blank classes
+        .filter(c => (c !== ' ') && (c !== '')) // removes blank classes
         .join(' '); // combines all classes separated by space
     }
 
