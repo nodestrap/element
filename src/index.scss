@@ -264,6 +264,19 @@ $_state-enabled : ".enabled";
     filter          : var(#{$cssvar}filter);
 
 
+
+    /* begin: apply inherited properties */
+    #{typo.$cssvar}color           : var(#{$cssvar}color);
+
+    #{typo.$cssvar}font-size       : var(#{$cssvar}font-size);
+    #{typo.$cssvar}font-family     : var(#{$cssvar}font-family);
+    #{typo.$cssvar}font-weight     : var(#{$cssvar}font-weight);
+    #{typo.$cssvar}font-style      : var(#{$cssvar}font-style);
+    #{typo.$cssvar}text-decoration : var(#{$cssvar}text-decoration);
+    #{typo.$cssvar}line-height     : var(#{$cssvar}lineheight);
+    /* end: apply inherited properties */
+
+
     
     /* begin: variant-size: font-size, padding, border-radius */
     @each $size in (sm, lg) { @include variant-of($alias, $size) {
@@ -366,4 +379,4 @@ $_state-enabled : ".enabled";
 
 
 // abstract class => no emit class
-// @include class($alias, $class, "");
+// @include class($alias, $class);
