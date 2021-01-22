@@ -280,14 +280,12 @@ $_state-enabled : ".enabled";
     
     /* begin: variant-size: font-size, padding, border-radius */
     @each $size in (sm, lg) { @include variant-of($alias, $size) {
-        font-size       : var(#{$cssvar}font-size-#{$size});
+        #{$cssvar}font-size     : var(#{$cssvar}font-size-#{$size});
 
-        padding-left    : var(#{$cssvar}padding-x-#{$size});
-        padding-right   : var(#{$cssvar}padding-x-#{$size});
-        padding-top     : var(#{$cssvar}padding-y-#{$size});
-        padding-bottom  : var(#{$cssvar}padding-y-#{$size});
+        #{$cssvar}padding-x     : var(#{$cssvar}padding-x-#{$size});
+        #{$cssvar}padding-y     : var(#{$cssvar}padding-y-#{$size});
 
-        border-radius   : var(#{$cssvar}border-radius-#{$size});
+        #{$cssvar}border-radius : var(#{$cssvar}border-radius-#{$size});
     }}
     /* end: variant-size: font-size, padding, border-radius */
 
