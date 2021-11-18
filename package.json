@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/element",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A basic building block without any applied stylesheet of nodestrap components.",
   "type": "module",
   "main": "dist/Element.jsx",
