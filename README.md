@@ -18,7 +18,7 @@ Rendered to:
 ```
 -----
 ```jsx
-<Element tag='span' classes=['button', 'awesome'] variantClasses=['big', 'dark'] stateClasses=['hovered']>
+<Element tag='span' classes={['button', 'awesome']} variantClasses={['big', 'dark']} stateClasses={['hovered']}>
     hello world
 </Element>
 ```
@@ -30,16 +30,16 @@ Rendered to:
 ```
 -----
 ```jsx
-<Element semanticTag=['ul', 'ol'] semanticRole='list'>
+<Element semanticTag={['ul', 'ol']} semanticRole='list'>
     hello world
 </Element>
-<Element semanticTag=['ul', 'ol'] semanticRole='list' tag='ul'>
+<Element semanticTag={['ul', 'ol']} semanticRole='list' tag='ul'>
     hello world
 </Element>
-<Element semanticTag=['ul', 'ol'] semanticRole='list' tag='ol'>
+<Element semanticTag={['ul', 'ol']} semanticRole='list' tag='ol'>
     hello world
 </Element>
-<Element semanticTag=['ul', 'ol'] semanticRole='list' tag='div'>
+<Element semanticTag={['ul', 'ol']} semanticRole='list' tag='div'>
     hello world
 </Element>
 ```
