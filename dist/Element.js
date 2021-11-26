@@ -186,13 +186,13 @@ export function Element(props) {
     const [tag, role] = useSemantic(props);
     const Tag = (tag ?? 'div');
     // jsx:
-    return (<Tag 
+    return (React.createElement(Tag
     // other props:
-    {...htmlProps} 
-    // semantics:
-    role={role || undefined} aria-label={props['aria-label'] || undefined} 
-    // classes:
-    className={Array.from(new Set([
+    , { ...htmlProps, 
+        // semantics:
+        role: role || undefined, "aria-label": props['aria-label'] || undefined, 
+        // classes:
+        className: Array.from(new Set([
             // main:
             props.mainClass,
             // additionals:
@@ -201,8 +201,6 @@ export function Element(props) {
             ...(props.variantClasses ?? []),
             // states:
             ...(props.stateClasses ?? []),
-        ].filter((c) => !!c))).join(' ') || undefined}>
-            {props.children}
-        </Tag>);
+        ].filter((c) => !!c))).join(' ') || undefined }, props.children));
 }
 export { Element as default };
