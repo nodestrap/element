@@ -213,7 +213,7 @@ export function Element(props) {
     }, [mainClass, classes, variantClasses, stateClasses]);
     // fn props:
     const [tag, role] = useSemantic(props);
-    const Tag = (tag ?? 'div');
+    const Tag = (tag || 'div'); // ignores an empty string '' of tag
     // jsx:
     return (React.createElement(Tag
     // other props:
