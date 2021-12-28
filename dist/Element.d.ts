@@ -16,6 +16,7 @@ export declare const useSemantic: (props: SemanticProps, options?: SemanticOptio
 export declare const useTestSemantic: (props: SemanticProps, options: SemanticOptions) => readonly [Tag | undefined, React.AriaRole | undefined, boolean, boolean];
 export interface ElementProps<TElement extends HTMLElement = HTMLElement> extends React.DOMAttributes<TElement>, SemanticProps {
     style?: React.CSSProperties;
+    outerRef?: React.Ref<TElement>;
     elmRef?: React.Ref<TElement>;
     id?: string;
     mainClass?: Optional<string>;

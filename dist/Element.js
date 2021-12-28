@@ -1,5 +1,9 @@
 // react:
 import { default as React, useMemo, } from 'react'; // base technology of our cssfn components
+// nodestrap utilities:
+import { 
+// utilities:
+setRef, } from '@nodestrap/utilities';
 export const useSemantic = (props, options = props) => {
     const { tag, role, } = props;
     const { semanticTag, semanticRole, } = options;
@@ -186,7 +190,10 @@ export function Element(props) {
     // html props:
     const htmlProps = useMemo(() => {
         const htmlProps = {
-            ref: props.elmRef,
+            ref: (elm) => {
+                setRef(props.outerRef, elm);
+                setRef(props.elmRef, elm);
+            },
         };
         for (const name in props) {
             if (isHtmlProp(name)) {
