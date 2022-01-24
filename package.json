@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/element",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "A basic building block without any applied stylesheet of nodestrap components.",
   "type": "module",
   "main": "dist/Element.js",
@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/nodestrap/element#readme",
   "dependencies": {
-    "@cssfn/types": "^1.0.3",
-    "@nodestrap/utilities": "^4.0.2",
+    "@cssfn/types": "^1.0.4",
+    "@nodestrap/utilities": "^4.0.3",
     "@types/react": "^17.0.38",
     "react": "^17.0.2"
   }

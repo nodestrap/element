@@ -8,10 +8,10 @@ export const useSemantic = (props, options = props) => {
     const { tag, role, } = props;
     const { semanticTag, semanticRole, } = options;
     return useMemo(() => {
-        const roleAbs = role ?? (Array.isArray(semanticRole) ? (semanticRole?.[0] ?? undefined) : (semanticRole ?? undefined));
-        const isDesiredType = !!roleAbs && (Array.isArray(semanticRole) ? semanticRole.includes(roleAbs) : (semanticRole === roleAbs));
-        const tagFn = tag ?? (isDesiredType ? (Array.isArray(semanticTag) ? (semanticTag?.[0] ?? undefined) : (semanticTag ?? undefined)) : undefined);
-        const isSemanticTag = !!tagFn && (Array.isArray(semanticTag) ? semanticTag.includes(tagFn) : (semanticTag === tagFn));
+        const roleAbs = role ?? ([semanticRole].flat()?.[0] ?? undefined);
+        const isDesiredType = !!roleAbs && ([semanticRole].flat().includes(roleAbs));
+        const tagFn = tag ?? (isDesiredType ? ([semanticTag].flat()?.[0] ?? undefined) : undefined);
+        const isSemanticTag = !!tagFn && ([semanticTag].flat().includes(tagFn));
         const roleFn = isDesiredType ? (isSemanticTag ? '' : roleAbs) : roleAbs; /* `''` => do not render role attribute, `undefined` => lets the BaseComponent decide the appropriate role */
         return [
             tagFn,
@@ -20,7 +20,7 @@ export const useSemantic = (props, options = props) => {
             isSemanticTag,
         ];
         // eslint-disable-next-line
-    }, [tag, role, ...(Array.isArray(semanticTag) ? semanticTag : [semanticTag]), ...(Array.isArray(semanticRole) ? semanticRole : [semanticRole])]);
+    }, [tag, role, semanticTag, semanticRole].flat());
 };
 export const useTestSemantic = (props, options) => {
     const { semanticTag: props_semanticTag, semanticRole: props_semanticRole, } = props;
@@ -50,7 +50,8 @@ export const useTestSemantic = (props, options) => {
             semanticTag,
             semanticRole,
         };
-    }, [props_semanticTag, props_semanticRole, options_semanticTag, options_semanticRole]);
+        // eslint-disable-next-line
+    }, [props_semanticTag, props_semanticRole, options_semanticTag, options_semanticRole].flat());
     return useSemantic(props, newOptions);
 };
 // react components:
@@ -187,23 +188,31 @@ const htmlPropList = [
 ];
 const isHtmlProp = (propName) => propName.startsWith('on') || propName.startsWith('aria-') || htmlPropList.includes(propName);
 export function Element(props) {
+    // rest props:
+    const { 
+    // semantics:
+    tag: _tag, role: _role, semanticTag, semanticRole, 'aria-label': ariaLabel, 
+    // classes:
+    mainClass, classes, variantClasses, stateClasses, 
+    // children:
+    children, ...restProps } = props;
     // html props:
     const htmlProps = useMemo(() => {
         const htmlProps = {
             ref: (elm) => {
-                setRef(props.outerRef, elm);
-                setRef(props.elmRef, elm);
+                setRef(restProps.outerRef, elm);
+                setRef(restProps.elmRef, elm);
             },
         };
-        for (const name in props) {
+        for (const name in restProps) {
             if (isHtmlProp(name)) {
-                htmlProps[name] = props[name];
+                htmlProps[name] = restProps[name];
             } // if
         } // for
         return htmlProps;
-    }, [props]);
+        // eslint-disable-next-line
+    }, Object.keys(restProps));
     // className:
-    const { mainClass, classes, variantClasses, stateClasses, } = props;
     const className = useMemo(() => {
         return (Array.from(new Set([
             // main:
@@ -217,7 +226,8 @@ export function Element(props) {
         ].filter((c) => !!c))).join(' ')
             ||
                 undefined);
-    }, [mainClass, classes, variantClasses, stateClasses]);
+        // eslint-disable-next-line
+    }, [mainClass, classes, variantClasses, stateClasses].flat());
     // fn props:
     const [tag, role] = useSemantic(props);
     const Tag = (tag || 'div'); // ignores an empty string '' of tag
@@ -226,8 +236,8 @@ export function Element(props) {
     // other props:
     , { ...htmlProps, 
         // semantics:
-        role: role || undefined, "aria-label": props['aria-label'] || undefined, 
+        role: role || undefined, "aria-label": ariaLabel || undefined, 
         // classes:
-        className: className }, props.children));
+        className: className }, children));
 }
 export { Element as default };
