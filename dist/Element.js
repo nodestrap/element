@@ -197,7 +197,7 @@ export function Element(props) {
     // children:
     children, ...restProps } = props;
     // html props:
-    const htmlProps = useMemo(() => {
+    const htmlProps = (() => {
         const htmlProps = {
             ref: (elm) => {
                 setRef(restProps.outerRef, elm);
@@ -210,8 +210,7 @@ export function Element(props) {
             } // if
         } // for
         return htmlProps;
-        // eslint-disable-next-line
-    }, Object.keys(restProps));
+    })();
     // className:
     const className = useMemo(() => {
         return (Array.from(new Set([
