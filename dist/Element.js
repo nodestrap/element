@@ -186,7 +186,13 @@ const htmlPropList = [
     'referrerPolicy',
     'ping',
 ];
-const isHtmlProp = (propName) => propName.startsWith('on') || propName.startsWith('aria-') || htmlPropList.includes(propName);
+const isHtmlProp = (propName) => ((propName.startsWith('on')
+    &&
+        !['onActiveChange', 'onExcitedChange'].includes(propName))
+    ||
+        propName.startsWith('aria-')
+    ||
+        htmlPropList.includes(propName));
 export function Element(props) {
     // rest props:
     const { 
